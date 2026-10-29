@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>블라인드 오목</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<svg class="sprite" aria-hidden="true">
+  <symbol id="corner" viewBox="0 0 60 60">
+    <path d="M4 58V10Q4 4 10 4H58" fill="none" stroke="currentColor" stroke-width="2.2"/>
+    <path d="M12 58V18Q12 12 18 12H58" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"/>
+    <path d="M4 4H18L4 18Z" fill="currentColor"/>
+    <path d="M24 15L33 24L24 33L15 24Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="24" cy="24" r="2.4" fill="currentColor"/>
+  </symbol>
+  <symbol id="divider" viewBox="0 0 320 20">
+    <path d="M0 10H132M188 10H320" stroke="currentColor" stroke-width="1"/>
+    <path d="M160 2L168 10L160 18L152 10Z" fill="currentColor"/>
+    <circle cx="140" cy="10" r="2.2" fill="currentColor"/>
+    <circle cx="180" cy="10" r="2.2" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<div class="orbs" id="orbs" aria-hidden="true"></div>
+
+<main class="app">
+  <div class="shell">
+    <svg class="corner tl"><use href="#corner"/></svg>
+    <svg class="corner tr"><use href="#corner"/></svg>
+    <svg class="corner bl"><use href="#corner"/></svg>
+    <svg class="corner br"><use href="#corner"/></svg>
+
+    <section class="screen active" id="home">
+      <div class="stack">
+        <div class="badge">MEMORY BOARD GAME</div>
+        <div class="hero" id="hero"></div>
+        <div>
+          <p class="eyebrow">BLIND OMOK</p>
+          <h1 class="title">블라인드 오목</h1>
+        </div>
+        <p class="sub">누가 놓은 돌일까? 색 속에 숨은 기억 대결</p>
+        <svg class="divider"><use href="#divider"/></svg>
+        <div class="btn-stack">
+          <button class="btn btn-red big" data-act="open" data-val="cpu">컴퓨터와 대결</button>
+          <button class="btn btn-gold big" data-act="open" data-val="pvp">친구와 1:1</button>
+          <button class="btn" data-act="nav" data-val="howto">게임 방법</button>
+        </div>
+        <div class="records" id="records"></div>
+      </div>
+    </section>
+
+    <section class="screen" id="setup">
+      <div class="stack wide">
+        <p class="eyebrow">SELECT LEVEL</p>
+        <h2 class="screen-title" id="setupTitle"></h2>
+        <svg class="divider"><use href="#divider"/></svg>
+        <div class="presets" id="presets"></div>
+        <p class="summary" id="summary"></p>
+        <details class="custom">
+          <summary>세부 설정 바꾸기</summary>
+          <div id="optBox"></div>
+        </details>
+        <div class="btn-row">
+          <button class="btn" data-act="nav" data-val="home">뒤로</button>
+          <button class="btn btn-red" data-act="start">시작</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="howto">
+      <div class="stack">
+        <p class="eyebrow">HOW TO PLAY</p>
+        <h2 class="screen-title">게임 방법</h2>
+        <svg class="divider"><use href="#divider"/></svg>
+        <ol class="guide">
+          <li><strong>색을 골라 두기</strong>선공(흑)은 색을 고른 뒤 칸을 눌러 돌을 놓아요.</li>
+          <li><strong>똑같은 색으로 따라 두기</strong>후공(백)은 선공이 방금 놓은 색과 같은 색으로만 놓아요.</li>
+          <li><strong>기억이 열쇠</strong>돌 색만 보여서 어느 돌이 누구 것인지는 외워야 해요.</li>
+          <li><strong>다섯 개 잇기</strong>자기 돌 5개 이상을 가로, 세로, 대각선으로 이으면 승리해요.</li>
+          <li><strong>도우미와 선언</strong>도우미는 돌을 눌러 주인을 잠깐 보여 줘요. 선언제에서는 직접 "오목!"을 눌러야 하고, 틀리면 바로 져요.</li>
+        </ol>
+        <button class="btn" data-act="nav" data-val="home">뒤로</button>
+      </div>
+    </section>
+
+    <section class="screen" id="game">
+      <header class="game-top">
+        <button class="btn small" data-act="nav" data-val="home">나가기</button>
+        <div class="banner">
+          <div class="banner-main" id="bannerMain"></div>
+          <div class="banner-sub" id="bannerSub"></div>
+        </div>
+        <div class="helper-box" id="helperBox"></div>
+      </header>
+      <div class="board-wrap"><div class="board" id="board"></div></div>
+      <footer class="game-bottom">
+        <div class="palette" id="palette"></div>
+        <div class="actions" id="actions"></div>
+      </footer>
+    </section>
+  </div>
+</main>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
